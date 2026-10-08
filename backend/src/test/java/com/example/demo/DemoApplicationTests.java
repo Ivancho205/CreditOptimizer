@@ -1,10 +1,10 @@
-package com.creditoptimizer.backend_creditoptimizer;
+package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendCreditoptimizerApplicationTests {
+class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {

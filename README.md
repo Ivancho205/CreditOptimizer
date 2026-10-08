@@ -1,2 +1,0 @@
-# CreditOptimizer
-CreditOptimizerIUPB
