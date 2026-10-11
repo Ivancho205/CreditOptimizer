@@ -1,5 +1,7 @@
 package com.creditoptimizer.backend_creditoptimizer.application;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntityTransaction;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.None;
+
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,9 +47,13 @@ public class Transactionservice {
     }
 
     public String modificar(int idTransaction, EntityTransaction transaction) {
+        transactionList =
+        transactionList.stream().map(item->item.id() == transaction.id() ? transaction : item).toList();
         return "Modificado con éxito el ID: " + idTransaction;
     }
     public String eliminar(int idTransaction) {
+        transactionList =
+        transactionList.stream().map(item->item.id() == idTransaction ? null : item).toList();
         return "Eliminado con éxito el ID: " + idTransaction;
     }
 }
