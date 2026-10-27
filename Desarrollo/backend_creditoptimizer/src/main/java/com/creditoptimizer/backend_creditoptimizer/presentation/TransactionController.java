@@ -1,5 +1,5 @@
 package com.creditoptimizer.backend_creditoptimizer.presentation;
-import com.creditoptimizer.backend_creditoptimizer.application.Transactionservice;
+import com.creditoptimizer.backend_creditoptimizer.application.TransactionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntityTransaction;
@@ -12,9 +12,9 @@ import java.util.Optional;
 
 @RestController
 public class TransactionController {
-    private final Transactionservice service;
+    private final TransactionService service;
 
-    public TransactionController(Transactionservice service) {
+    public TransactionController(TransactionService service) {
         this.service = service;
     }
 

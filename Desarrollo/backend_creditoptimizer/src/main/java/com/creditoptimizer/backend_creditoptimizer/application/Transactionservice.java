@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Transactionservice {
+public class TransactionService {
 
     private List<EntityTransaction> transactionList;
 
-    public Transactionservice() {
+    public TransactionService() {
         transactionList = new ArrayList<>();
 
         EntityTransaction transaction1 = new EntityTransaction(1, "Ada", "enos", "enos", 3.4, 3, true);
