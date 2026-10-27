@@ -1,12 +1,11 @@
 package com.creditoptimizer.backend_creditoptimizer.domain;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public record EntitySuggestion (
     int id,
-    Date expiration_date,
+    LocalDate expiration_date,
     String agent_answer,
-    EntityUser user,
     EntityChat chat 
 ){}
 

@@ -1,6 +1,6 @@
 package com.creditoptimizer.backend_creditoptimizer.application;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntityChat;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.None;
+import com.creditoptimizer.backend_creditoptimizer.domain.EntityUser;
 
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -16,11 +16,16 @@ public class ChatService {
     public ChatService() {
         chatList = new ArrayList<>();
 
-        EntityChat chat1 = new EntityChat(1, "Chat1", "Analytic");
-        EntityChat chat2 = new EntityChat(2, "Chat2", "Fast");
-        EntityChat chat3 = new EntityChat(3, "Chat3", "Analytic");
-        EntityChat chat4 = new EntityChat(4, "Chat4", "Analytic");
-        EntityChat chat5 = new EntityChat(5, "Chat5", "Fast");
+        // users
+        EntityUser user1 = new EntityUser(1, "Ada", "nos@gmail.com", "administrator", "qwerty");
+        EntityUser user2 = new EntityUser(2, "Bdan", "nos2@gmail.com", "user", "qwerty");
+ 
+        // Chats
+        EntityChat chat1 = new EntityChat(1, "Chat1", "Analytic", user1);
+        EntityChat chat2 = new EntityChat(2, "Chat2", "Fast", user1);
+        EntityChat chat3 = new EntityChat(3, "Chat3", "Analytic", user2);
+        EntityChat chat4 = new EntityChat(4, "Chat4", "Analytic", user1);
+        EntityChat chat5 = new EntityChat(5, "Chat5", "Fast", user2);
 
 
         chatList.addAll(Arrays.asList(chat1, chat2, chat3, chat4, chat5));
