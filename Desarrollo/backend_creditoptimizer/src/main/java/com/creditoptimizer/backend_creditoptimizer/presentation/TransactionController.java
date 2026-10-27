@@ -18,15 +18,6 @@ public class TransactionController {
         this.service = service;
     }
 
-        //1
-        @GetMapping("/")
-        public Map<String, String> inicio () {
-            Map<String, String> respuesta = new HashMap<>();
-            respuesta.put("mensaje", "API CreditOptimizer IUPB funcionando");
-            return respuesta;
-        }
-        //2
-
         @GetMapping("/api/products")
         public List<EntityTransaction> consultar(){
             return service.consultar();
