@@ -2,7 +2,6 @@ package com.creditoptimizer.backend_creditoptimizer.application;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntityChat;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntitySuggestion;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntityUser;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.None;
 
 import org.springframework.stereotype.Service;
 
@@ -45,7 +44,7 @@ public class SuggestionService {
     public List<EntitySuggestion> consultar() {
         return suggestionList;
     }
-    public Optional<EntitySuggestion> consultarPorId(int idSuggestion) {
+    public Optional<EntitySuggestion> consultarById(int idSuggestion) {
         Optional optional = Optional.empty();
         for (EntitySuggestion suggestion: suggestionList) {
             if(idSuggestion == suggestion.id()){
@@ -55,17 +54,17 @@ public class SuggestionService {
         }
         return optional;
     }
-    public String ingresar(EntitySuggestion suggestion) {
+    public String add(EntitySuggestion suggestion) {
         suggestionList.add(suggestion);
         return "Ingresado con éxito";
     }
 
-    public String modificar(int idSuggestion, EntitySuggestion suggestion) {
+    public String modify(int idSuggestion, EntitySuggestion suggestion) {
         suggestionList =
         suggestionList.stream().map(item->item.id() == suggestion.id() ? suggestion : item).toList();
         return "Modificado con éxito el ID: " + idSuggestion;
     }
-    public String eliminar(int idSuggestion) {
+    public String delete(int idSuggestion) {
         suggestionList =
         suggestionList.stream().map(item->item.id() == idSuggestion ? null : item).toList();
         return "Eliminado con éxito el ID: " + idSuggestion;

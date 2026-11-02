@@ -1,6 +1,5 @@
 package com.creditoptimizer.backend_creditoptimizer.application;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntityUser;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.None;
 
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class UserService {
     public List<EntityUser> consultar() {
         return userList;
     }
-    public Optional<EntityUser> consultarPorId(int idUser) {
+    public Optional<EntityUser> consultarById(int idUser) {
         Optional optional = Optional.empty();
         for (EntityUser user: userList) {
             if(idUser == user.id()){
@@ -41,17 +40,17 @@ public class UserService {
         }
         return optional;
     }
-    public String ingresar(EntityUser user) {
+    public String add(EntityUser user) {
         userList.add(user);
         return "Ingresado con éxito";
     }
 
-    public String modificar(int idUser, EntityUser user) {
+    public String modify(int idUser, EntityUser user) {
         userList =
         userList.stream().map(item->item.id() == user.id() ? user : item).toList();
         return "Modificado con éxito el ID: " + idUser;
     }
-    public String eliminar(int idUser) {
+    public String delete(int idUser) {
         userList =
         userList.stream().map(item->item.id() == idUser ? null : item).toList();
         return "Eliminado con éxito el ID: " + idUser;

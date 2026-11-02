@@ -25,8 +25,8 @@ public class ChatController {
         //2
 
        @GetMapping("/api/chats/{idChat}")
-       public EntityChat consultarPorId(@PathVariable("idChat") int idChat) {
-            Optional chat = service.consultarPorId(idChat);
+       public EntityChat consultarById(@PathVariable("idChat") int idChat) {
+            Optional chat = service.consultarById(idChat);
             if(chat.isPresent()){
                 return (EntityChat) chat.get();
             }
@@ -35,19 +35,19 @@ public class ChatController {
 
         //3
         @PostMapping("/api/chats")
-        public String ingresar(@RequestBody EntityChat product) {
-            return service.ingresar(product);
+        public String add(@RequestBody EntityChat product) {
+            return service.add(product);
         }
 
         //4
         @PutMapping("/api/chats/{idChat}")
-        public String modificar(@PathVariable("idChat") int idChat,@RequestBody EntityChat product){
-            return service.modificar(idChat, product);
+        public String modify(@PathVariable("idChat") int idChat,@RequestBody EntityChat product){
+            return service.modify(idChat, product);
         }
 
         //5
         @DeleteMapping("/api/chats/{idChat}")
-        public String eliminar ( @PathVariable("idChat") int idChat){
-            return service.eliminar(idChat);
+        public String delete ( @PathVariable("idChat") int idChat){
+            return service.delete(idChat);
         }
     }

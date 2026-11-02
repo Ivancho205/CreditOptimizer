@@ -36,7 +36,7 @@ public class ChatService {
     public List<EntityChat> consultar() {
         return chatList;
     }
-    public Optional<EntityChat> consultarPorId(int idChat) {
+    public Optional<EntityChat> consultarById(int idChat) {
         Optional optional = Optional.empty();
         for (EntityChat chat: chatList) {
             if(idChat == chat.id()){
@@ -46,17 +46,17 @@ public class ChatService {
         }
         return optional;
     }
-    public String ingresar(EntityChat chat) {
+    public String add(EntityChat chat) {
         chatList.add(chat);
         return "Ingresado con éxito";
     }
 
-    public String modificar(int idChat, EntityChat chat) {
+    public String modify(int idChat, EntityChat chat) {
         chatList =
         chatList.stream().map(item->item.id() == chat.id() ? chat : item).toList();
         return "Modificado con éxito el ID: " + idChat;
     }
-    public String eliminar(int idChat) {
+    public String delete(int idChat) {
         chatList =
         chatList.stream().map(item->item.id() == idChat ? null : item).toList();
         return "Eliminado con éxito el ID: " + idChat;

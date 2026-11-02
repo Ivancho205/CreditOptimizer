@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.creditoptimizer.backend_creditoptimizer.domain.EntitySuggestion;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -25,8 +23,8 @@ public class SuggestionController {
         //3
 
        @GetMapping("/api/products/{idProduct}")
-       public EntitySuggestion consultarPorId(@PathVariable("idProduct") int idProduct) {
-            Optional suggestion = service.consultarPorId(idProduct);
+       public EntitySuggestion consultarById(@PathVariable("idProduct") int idProduct) {
+            Optional suggestion = service.consultarById(idProduct);
             if(suggestion.isPresent()){
                 return (EntitySuggestion) suggestion.get();
             }
@@ -35,17 +33,17 @@ public class SuggestionController {
 
         //4
         @PostMapping("/api/products")
-        public String ingresar(@RequestBody EntitySuggestion product) {
-            return service.ingresar(product);
+        public String add(@RequestBody EntitySuggestion product) {
+            return service.add(product);
         }
 
         @PutMapping("/api/products/{idProduct}")
-        public String modificar(@PathVariable("idProduct") int idProduct,@RequestBody EntitySuggestion product){
-            return service.modificar(idProduct, product);
+        public String modify(@PathVariable("idProduct") int idProduct,@RequestBody EntitySuggestion product){
+            return service.modify(idProduct, product);
         }
 
         @DeleteMapping("/api/products/{idProduct}")
-        public String eliminar ( @PathVariable("idProduct") int idProduct){
-            return service.eliminar(idProduct);
+        public String delete ( @PathVariable("idProduct") int idProduct){
+            return service.delete(idProduct);
         }
     }
